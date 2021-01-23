@@ -4,7 +4,7 @@ import java.util.*;
 
 public class SortedCollection {
 	// TODO: Add member variables or methods as needed
-	static ArrayList<Integer> myList = new ArrayList<Integer>();
+	static ArrayList<String> myList = new ArrayList<String>();
 
 	/**
 	 * Adds the number n to the collection.
@@ -14,7 +14,7 @@ public class SortedCollection {
 	 */
 	public boolean add(int n) {
 		// TODO: Implement
-		myList.add(n);
+		myList.add(Integer.toString(n));
 		return true;
 	}
 
@@ -26,11 +26,16 @@ public class SortedCollection {
 	 */
 	public int remove() throws NoSuchElementException {
 		// TODO: Implement
-		int x;
+		if(myList.size() == 0){
+			throw new NoSuchElementException();
+		}
+		
+		String x;
 		Collections.sort(myList);
 		x = myList.get(0);
 		myList.remove(0);
-		return x;
+		
+		return Integer.parseInt(x);
 	}
 
 	/**
@@ -57,7 +62,7 @@ public class SortedCollection {
 		// If any commandline argument is not a number, call showUsage() and return.
 		int x = 0;
 		while(x < args.length){
-			myList.add(Integer.parseInt(args[x]));
+			myList.add(args[x]);
 			x++;
 		}
 		
